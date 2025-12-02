@@ -232,8 +232,8 @@ export default function HomePage() {
 
             <Reveal delay={200}>
               <p className="text-xl text-[#B2A8A8] max-w-2xl leading-relaxed border-l-2 border-[#e85d4a] pl-6">
-                Initialize descent sequence. Join the elite crew of Deep Station. 
-                Explore submerged ruins, maintain the facility, and survive the abyss.
+                Что такое ЛVМ? (Люди VS Монстры),
+                Это сеть серверов с разными хостами, разными админами и режимами, но с общей целью - развлекать игроков.
               </p>
             </Reveal>
 
