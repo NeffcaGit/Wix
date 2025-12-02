@@ -225,7 +225,7 @@ export default function HomePage() {
             
             <Reveal delay={100}>
               <h2 className="font-heading text-6xl md:text-8xl leading-[0.9] tracking-tighter bg-clip-text bg-gradient-to-r from-white via-[#c9ccf1] to-[#79d0ff] text-icon2 font-bold">
-                THE DEPTHS <span className="text-stroke-thin text-transparent bg-clip-text bg-gradient-to-r from-[#79d0ff] to-[#3342D2]">ARE CALLING</span>
+                Люди VS Монстры <span className="text-stroke-thin text-transparent bg-clip-text bg-gradient-to-r from-[#79d0ff] to-[#3342D2]">ARE CALLING</span>
               <br />
                 </h2>
             </Reveal>
