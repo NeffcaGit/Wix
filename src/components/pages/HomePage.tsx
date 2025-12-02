@@ -136,7 +136,6 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-[#050a10] text-[#F1F1F1] font-paragraph selection:bg-[#79d0ff]/30 selection:text-[#79d0ff] overflow-x-clip">
-      
       {/* --- Global Background System --- */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         {/* Deepest Layer - Void */}
@@ -165,7 +164,6 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-b from-[#0f1c28]/80 via-transparent to-[#0f1c28]" />
         <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-[1] bg-[length:100%_2px,3px_100%] pointer-events-none" />
       </div>
-
       {/* --- Navigation --- */}
       <motion.header 
         style={{ backgroundColor: `rgba(19, 42, 54, ${headerBgOpacity})` }}
@@ -205,7 +203,6 @@ export default function HomePage() {
           </Button>
         </div>
       </motion.header>
-
       {/* --- Hero Section --- */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
         <motion.div style={{ y: heroParallax }} className="absolute inset-0 z-0">
@@ -227,10 +224,10 @@ export default function HomePage() {
             </Reveal>
             
             <Reveal delay={100}>
-              <h1 className="font-heading text-6xl md:text-8xl font-bold leading-[0.9] tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-white via-[#c9ccf1] to-[#79d0ff]">
-                THE DEPTHS <br />
-                <span className="text-stroke-thin text-transparent bg-clip-text bg-gradient-to-r from-[#79d0ff] to-[#3342D2]">ARE CALLING</span>
-              </h1>
+              <h2 className="font-heading text-6xl md:text-8xl leading-[0.9] tracking-tighter bg-clip-text bg-gradient-to-r from-white via-[#c9ccf1] to-[#79d0ff] text-icon2 font-bold">
+                THE DEPTHS <span className="text-stroke-thin text-transparent bg-clip-text bg-gradient-to-r from-[#79d0ff] to-[#3342D2]">ARE CALLING</span>
+              <br />
+                </h2>
             </Reveal>
 
             <Reveal delay={200}>
@@ -272,7 +269,7 @@ export default function HomePage() {
                 <div className="flex items-center justify-between mb-6 border-b border-[#79d0ff]/10 pb-4">
                   <div className="flex items-center gap-3">
                     <Activity className="w-5 h-5 text-[#9be27d]" />
-                    <span className="font-heading font-bold text-[#F1F1F1]">SERVER_STATUS</span>
+                    <span className="font-heading font-bold text-[#F1F1F1] text-lg">SERVER_STATUS</span>
                   </div>
                   <span className="text-[#9be27d] text-sm font-mono animate-pulse">● ONLINE</span>
                 </div>
@@ -320,7 +317,6 @@ export default function HomePage() {
           <div className="w-[1px] h-12 bg-gradient-to-b from-[#79d0ff] to-transparent" />
         </motion.div>
       </section>
-
       {/* --- Narrative Transition --- */}
       <section className="relative py-32 px-6 border-t border-[#2e3a44] bg-[#0f1c28]">
         <div className="max-w-4xl mx-auto text-center space-y-8">
@@ -339,7 +335,6 @@ export default function HomePage() {
           </Reveal>
         </div>
       </section>
-
       {/* --- Game Modes (Simulation Modules) --- */}
       <section id="modes" className="relative py-32 px-6 overflow-hidden">
         {/* Background Texture */}
@@ -477,7 +472,6 @@ export default function HomePage() {
           </Tabs>
         </div>
       </section>
-
       {/* --- Server Rules (Protocols) --- */}
       <section id="rules" className="relative py-32 px-6 bg-[#0b141d]">
         <div className="max-w-[120rem] mx-auto">
@@ -544,7 +538,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
       {/* --- Footer (System Footer) --- */}
       <footer className="relative bg-[#050a10] border-t border-[#2e3a44] pt-24 pb-12 px-6 overflow-hidden">
         {/* Spotlight Effect */}
