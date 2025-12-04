@@ -85,6 +85,8 @@ export interface ServerRules {
   /** @wixFieldType text */
   ruleTitle?: string;
   /** @wixFieldType text */
+  gameMode?: string;
+  /** @wixFieldType text */
   ruleContent?: string;
   /** @wixFieldType number */
   ruleNumber?: number;
@@ -94,8 +96,6 @@ export interface ServerRules {
   lastUpdated?: Date | string;
   /** @wixFieldType text */
   consequence?: string;
-  /** @wixFieldType text */
-  gameMode?: string;
 }
 
 
