@@ -89,7 +89,7 @@ export default function HomePage() {
   const [serverRules, setServerRules] = useState<ServerRules[]>([]);
   const [socialLinks, setSocialLinks] = useState<SocialMediaLinks[]>([]);
   const [selectedMode, setSelectedMode] = useState<string>('');
-  const [selectedRule, setSelectedRule] = useState<string>('');
+  const [filteredRules, setFilteredRules] = useState<ServerRules[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
   // --- Scroll & Parallax Hooks ---
@@ -125,14 +125,27 @@ export default function HomePage() {
       setServerRules(sortedRules);
       setSocialLinks(sortedSocial);
 
-      if (sortedModes.length > 0) setSelectedMode(sortedModes[0]._id);
-      if (sortedRules.length > 0) setSelectedRule(sortedRules[0]._id);
+      if (sortedModes.length > 0) {
+        const firstModeId = sortedModes[0]._id;
+        setSelectedMode(firstModeId);
+        // Filter rules for the first mode
+        const modeRules = sortedRules.filter(rule => rule.gameMode === firstModeId);
+        setFilteredRules(modeRules.length > 0 ? modeRules : sortedRules);
+      }
       
       setIsLoaded(true);
     } catch (error) {
       console.error("Failed to load data", error);
     }
   };
+
+  // Update filtered rules when selected mode changes
+  useEffect(() => {
+    if (selectedMode && serverRules.length > 0) {
+      const modeRules = serverRules.filter(rule => rule.gameMode === selectedMode);
+      setFilteredRules(modeRules.length > 0 ? modeRules : serverRules);
+    }
+  }, [selectedMode, serverRules]);
 
   return (
     <div className="min-h-screen bg-[#050a10] text-[#F1F1F1] font-paragraph selection:bg-[#79d0ff]/30 selection:text-[#79d0ff] overflow-x-clip">
@@ -182,13 +195,18 @@ export default function HomePage() {
           </div>
 
           <nav className="hidden md:flex items-center gap-8">
-            {['Modes', 'Rules', 'Contact', 'Status'].map((item) => (
+            {[
+              { label: 'Режимы', href: '#modes' },
+              { label: 'Правила', href: '#rules' },
+              { label: 'Контакты', href: '#contact' },
+              { label: 'Статус', href: '#status' }
+            ].map((item) => (
               <a 
-                key={item}
-                href={`#${item.toLowerCase()}`} 
+                key={item.label}
+                href={item.href} 
                 className="relative text-sm font-medium text-[#B2A8A8] hover:text-[#79d0ff] transition-colors group py-2"
               >
-                <span className="relative z-10">{'// '}{item}</span>
+                <span className="relative z-10">{'// '}{item.label}</span>
                 <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#79d0ff] group-hover:w-full transition-all duration-300" />
               </a>
             ))}
@@ -199,7 +217,7 @@ export default function HomePage() {
             onClick={() => window.open('https://discord.com', '_blank')}
           >
             <MessageSquare className="w-4 h-4 mr-2" />
-            JOIN_SERVER
+            ПРИСОЕДИНИТЬСЯ
           </Button>
         </div>
       </motion.header>
@@ -245,7 +263,7 @@ export default function HomePage() {
                   onClick={() => window.open('https://discord.com', '_blank')}
                 >
                   <span className="relative z-10 flex items-center gap-2">
-                    INITIATE_DIVE <ChevronRight className="w-5 h-5" />
+                    НАЧАТЬ_ПОГРУЖЕНИЕ <ChevronRight className="w-5 h-5" />
                   </span>
                   <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                 </Button>
@@ -256,7 +274,7 @@ export default function HomePage() {
                   className="h-14 px-8 border-[#79d0ff]/50 text-[#79d0ff] hover:bg-[#79d0ff]/10 font-heading text-lg rounded-none"
                   onClick={() => document.getElementById('modes')?.scrollIntoView({ behavior: 'smooth' })}
                 >
-                  VIEW_PROTOCOLS
+                  ПРОСМОТР_ПРОТОКОЛОВ
                 </Button>
               </div>
             </Reveal>
@@ -505,7 +523,7 @@ export default function HomePage() {
 
             {/* Rules List */}
             <div className="lg:col-span-8 space-y-4">
-              {serverRules.map((rule, index) => (
+              {filteredRules.map((rule, index) => (
                 <Reveal key={rule._id} delay={index * 50}>
                   <div className="group relative bg-[#132a36]/20 border border-[#2e3a44] hover:border-[#9be27d]/50 transition-colors duration-300 overflow-hidden">
                     <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#2e3a44] group-hover:bg-[#9be27d] transition-colors duration-300" />

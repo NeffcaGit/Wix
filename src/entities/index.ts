@@ -94,6 +94,8 @@ export interface ServerRules {
   lastUpdated?: Date | string;
   /** @wixFieldType text */
   consequence?: string;
+  /** @wixFieldType text */
+  gameMode?: string;
 }
 
 
